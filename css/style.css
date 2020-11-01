@@ -148,7 +148,15 @@ body {
   --lightRed: #c3073f;
 }
 
+h3 {
+  font-size: 1.5rem;
+}
+
 /* HEADER AREA */
+
+.hero {
+  margin-bottom: 50px;
+}
 
 header {
   width: 100vw;
@@ -215,6 +223,39 @@ nav .cross {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+/* MAIN CONTENT HOMEPAGE */
+
+.trend-movies,
+.movie-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.card-trend {
+  flex: 0 0 auto;
+}
+
+.trend-movies::-webkit-scrollbar,
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.trend-movies,
+.movie-row {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.top-rated {
+  height: 100vh;
+}
+
+.movie-row img {
+  margin: 0px 0px 0px 10px;
 }
 
 /* MEDIA QUERIES */

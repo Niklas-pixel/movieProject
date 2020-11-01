@@ -1,7 +1,8 @@
-const imageDiv = document.querySelector(".pic");
-const body = document.querySelector(".body");
+const imageDivHero = document.querySelector(".trend-movies");
+const imageDivTopRated = document.querySelector(".movie-row");
 
-const imgBase = "https://image.tmdb.org/t/p/w200";
+const imgBase400 = "https://image.tmdb.org/t/p/w400";
+const imgBase200 = "https://image.tmdb.org/t/p/w200";
 
 fetch(
   "https://api.themoviedb.org/3/movie/top_rated?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
@@ -13,10 +14,18 @@ fetch(
     // console.log(data.results[0])
 
     data.results.forEach((topMovie) => {
-      const imgTag = document.createElement("img");
-      const srcUrl = imgBase + topMovie.poster_path;
-      imgTag.setAttribute("src", srcUrl);
-      imageDiv.appendChild(imgTag);
+      // Below is for trend movies top of homepage
+      const srcUrl400 = imgBase400 + topMovie.poster_path;
+      const imgTagsHero = document.createElement("img");
+      imgTagsHero.setAttribute("src", srcUrl400);
+      imgTagsHero.setAttribute("class", ".card-trend");
+      imageDivHero.appendChild(imgTagsHero);
+      // Below is for top-rated movies homepage
+      const srcUrl200 = imgBase200 + topMovie.poster_path;
+      const imgTagsTopRated = document.createElement("img");
+      imgTagsTopRated.setAttribute("src", srcUrl200);
+      imgTagsTopRated.setAttribute("class", ".card");
+      imageDivTopRated.appendChild(imgTagsTopRated);
     });
   })
   .catch((error) => {
