@@ -1,0 +1,187 @@
+/* CSS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*RESET ADDED*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 10px;
+}
+
+/* DEFAULT STYLES */
+:root {
+  --black: #1a1a1d;
+  --grey: #4e4e50;
+  --white: white;
+  --darkRed: #6f2232;
+  --mediumRed: #950740;
+  --lightRed: #c3073f;
+}
+
+/* HEADER AREA */
+
+header {
+  width: 100vw;
+  height: 11vh;
+  background-color: var(--lightRed);
+}
+
+.logo {
+  padding: 10px 0 10px 10px;
+}
+
+.logo-img {
+  width: 10vw;
+  height: 10vw;
+}
+.filter-white {
+  filter: invert(99%) sepia(0%) saturate(0%) hue-rotate(36deg) brightness(108%)
+    contrast(101%);
+}
+
+.logo-text {
+  font-size: 1rem;
+  color: white;
+}
+
+/* MEDIA QUERIES */
+
+/* Mobile first, we start from the smallest viewport width */
+
+/* From 768px and up */
+@media (min-width: 768px) {
+}
+
+/* From 1024px and up */
+@media (min-width: 1024px) {
+}
