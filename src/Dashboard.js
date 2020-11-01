@@ -1,7 +1,7 @@
 const watchlist = document.querySelector(".watchlist");
 const viewedMovies = document.querySelector(".viewed-movies");
 
-const imgBase200 = "https://image.tmdb.org/t/p/w200";
+const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
 fetch(
   "https://api.themoviedb.org/3/movie/top_rated?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
@@ -14,7 +14,7 @@ fetch(
 
     data.results.forEach((topMovie) => {
       // Below is for dashboard watchlist
-      const srcUrl200 = imgBase200 + topMovie.poster_path;
+      const srcUrl200 = imgBaseW200 + topMovie.poster_path;
       const imgTagsTopRated = document.createElement("img");
       imgTagsTopRated.setAttribute("src", srcUrl200);
       imgTagsTopRated.setAttribute("class", ".card");

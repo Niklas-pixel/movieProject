@@ -1,3 +1,4 @@
+// index.html elements
 const imageDivHero = document.querySelector(".trend-movies");
 const imageDivTopRated = document.querySelector(".movie-row");
 
@@ -26,8 +27,20 @@ fetch(
       imgTagsTopRated.setAttribute("src", srcUrl200);
       imgTagsTopRated.setAttribute("class", ".card");
       imageDivTopRated.appendChild(imgTagsTopRated);
+
+      // set movie.html content on click and redirect to movie.html
+      imgTagsTopRated.addEventListener("click", () => {
+        const movie = new Movie(srcUrl400);
+
+        console.log(movie);
+
+        // location.assign("movie.html");
+      });
     });
   })
   .catch((error) => {
     console.log(error);
   });
+
+// THIS IS WHERE CLASSES COME IN, STORE THE CLICKED MOVIES PROPERTIES IN THE CLASS
+// AND IN Movie.js And movie.html DISPLAY THOSE PROPERTIES
