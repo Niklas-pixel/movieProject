@@ -32,7 +32,8 @@ fetch(
 
 // ADD MOVIE FUNCTIONALITY WITH THE ADDBUTTON AND LOCALSTORAGE
 
-function getAllImages() {
+// WORKING BUT OLD CODE BELOW
+/* function getAllImages() {
   const imagesString = localStorage.getItem("images");
   const imagesArray = JSON.parse(imagesString);
 
@@ -50,6 +51,34 @@ function saveNewMovie() {
   const updatedImagesArray = [...imagesArray, url];
   const updatedImagesString = JSON.stringify(updatedImagesArray);
   localStorage.setItem("images", updatedImagesString);
+}
+
+addButton.addEventListener("click", saveNewMovie); */
+
+// REFACTORED TO WORK WITH THE CLASSES (DONT WORK THO XD)
+function getAllImages() {
+  const usersString = localStorage.getItem("users");
+  const usersArray = JSON.parse(usersString);
+  const images = usersArray[0].images;
+  console.log(images);
+  if (images === null) {
+    return [];
+  } else {
+    return images;
+  }
+}
+
+function saveNewMovie() {
+  const url = moviePoster.getAttribute("src");
+  const imagesArray = getAllImages();
+
+  const updatedImagesArray = [...imagesArray, url];
+  const updatedImagesString = JSON.stringify(updatedImagesArray);
+
+  // add the images array onto the user image propertie
+  newUser.images = updatedImagesArray;
+
+  localStorage.setItem("users");
 }
 
 addButton.addEventListener("click", saveNewMovie);

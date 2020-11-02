@@ -15,15 +15,46 @@ class Signup {
 
   handleEmailInput = (event) => {
     const email = event.target.value;
+    validator.checkEmailSyntax(email);
+    validator.checkEmailAvalibility(email);
+    this.displayErrorMessage();
   };
 
-  handleRepeatEmailInput = () => {};
+  handleRepeatEmailInput = (event) => {
+    const repeatEmail = event.target.value;
+    const email = this.emailInput.value;
+    validator.checkEmailMatch(email, repeatEmail);
+    this.displayErrorMessage();
+  };
 
   handlePasswordInput = (event) => {
     const password = event.target.value;
+    validator.checkPasswordLength(password);
+    this.displayErrorMessage();
   };
 
-  handleRepeatPasswordInput = () => {};
+  handleRepeatPasswordInput = (event) => {
+    const repeatPassword = event.target.value;
+    const password = this.passwordInput.value;
+    validator.checkPasswordMatch(password, repeatPassword);
+    this.displayErrorMessage();
+  };
+
+  handleDisabledBtn = () => {};
+
+  displayErrorMessage = () => {
+    this.errorMessage.innerHTML = "";
+    const errorsArr = Object.values(validator.displayErrors());
+    const errorsArrStr = String(errorsArr);
+    if (errorsArrStr === "") {
+      this.submitButton.removeAttribute("disabled");
+    }
+    errorsArr.forEach((error) => {
+      const p = document.createElement("p");
+      p.innerHTML = error;
+      this.errorMessage.appendChild(p);
+    });
+  };
 
   saveData = (event) => {
     event.preventDefault();
@@ -37,6 +68,7 @@ class Signup {
 
     // save the user in the database
 
+    db.saveNewUser(newUser);
     // empty form
     this.usernameInput.value = "";
     this.emailInput.value = "";
