@@ -17,25 +17,39 @@ function GetURLParameter(sParam) {
   }
 }
 
-const movie = GetURLParameter("movie");
-console.log(movie);
+const movieId = GetURLParameter("movie");
 
 // FETCH MOVIE WITH THE ID
 
 fetch(
-  `https://api.themoviedb.org/3/movie/${movie}?api_key=a2bf12ab60f87e1ff69ef7b00f747938`
+  `https://api.themoviedb.org/3/movie/${movieId}?api_key=a2bf12ab60f87e1ff69ef7b00f747938`
 )
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
-
     moviePoster.setAttribute("src", imgBaseW200 + data.poster_path);
   })
   .catch((error) => console.log(error));
 
 // ADD MOVIE FUNCTIONALITY WITH THE ADDBUTTON AND LOCALSTORAGE
 
-addButton.addEventListener("click", () => {
-  localStorage.setItem(`${movie}`, moviePoster.getAttribute("src"));
-  console.log(localStorage);
-});
+function getAllImages() {
+  const imagesString = localStorage.getItem("images");
+  const imagesArray = JSON.parse(imagesString);
+
+  if (imagesArray === null) {
+    return [];
+  } else {
+    return imagesArray;
+  }
+}
+
+function saveNewMovie() {
+  const url = moviePoster.getAttribute("src");
+  const imagesArray = getAllImages();
+
+  const updatedImagesArray = [...imagesArray, url];
+  const updatedImagesString = JSON.stringify(updatedImagesArray);
+  localStorage.setItem("images", updatedImagesString);
+}
+
+addButton.addEventListener("click", saveNewMovie);

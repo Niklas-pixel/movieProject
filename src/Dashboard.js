@@ -4,41 +4,24 @@ const viewedMovies = document.querySelector(".viewed-movies");
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
 // DISPLAY ALL THE MOVIES IMAGES FROM LOCALSTORAGE
-// const storageObj = { ...localStorage };
+function getAllImages() {
+  const imagesString = localStorage.getItem("images");
+  const imagesArray = JSON.parse(imagesString);
 
-function getStorage() {
-  const storage = JSON.parse(localStorage);
-  return storage;
+  if (imagesArray === null) {
+    return [];
+  } else {
+    return imagesArray;
+  }
 }
 
-console.log(getStorage());
+function displayWatchlist() {
+  const imagesArray = getAllImages();
+  imagesArray.forEach((poster, index) => {
+    const newImgEl = document.createElement("img");
+    newImgEl.setAttribute("src", poster);
+    watchlist.appendChild(newImgEl);
+  });
+}
 
-// TESTCODE BELOW
-/* 
-fetch(
-  "https://api.themoviedb.org/3/movie/top_rated?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
-)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    // console.log(data.results[0])
-
-    data.results.forEach((topMovie) => {
-      // Below is for dashboard watchlist
-      const srcUrl200 = imgBaseW200 + topMovie.poster_path;
-      const imgTagsTopRated = document.createElement("img");
-      imgTagsTopRated.setAttribute("src", srcUrl200);
-      imgTagsTopRated.setAttribute("class", ".card");
-      watchlist.appendChild(imgTagsTopRated);
-
-      // Below is for dashboard viewed movies
-      const imgTagsViewed = document.createElement("img");
-      imgTagsViewed.setAttribute("src", srcUrl200);
-      imgTagsViewed.setAttribute("class", ".card");
-      viewedMovies.appendChild(imgTagsViewed);
-    });
-  })
-  .catch((error) => {
-    console.log(error);
-  }); */
+displayWatchlist();
