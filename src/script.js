@@ -12,10 +12,11 @@ fetch(
     return response.json();
   })
   .then((data) => {
-    // console.log(data.results[0])
+    console.log(data.results[0]);
 
     data.results.forEach((topMovie) => {
       // Below is for trend movies top of homepage
+
       const srcUrl400 = imgBase400 + topMovie.poster_path;
       const imgTagsHero = document.createElement("img");
       imgTagsHero.setAttribute("src", srcUrl400);
@@ -30,11 +31,7 @@ fetch(
 
       // set movie.html content on click and redirect to movie.html
       imgTagsTopRated.addEventListener("click", () => {
-        const movie = new Movie(srcUrl400);
-
-        console.log(movie);
-
-        // location.assign("movie.html");
+        location.assign(`movie.html?movie=${topMovie.id}`);
       });
     });
   })

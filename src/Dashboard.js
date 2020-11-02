@@ -3,6 +3,18 @@ const viewedMovies = document.querySelector(".viewed-movies");
 
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
+// DISPLAY ALL THE MOVIES IMAGES FROM LOCALSTORAGE
+// const storageObj = { ...localStorage };
+
+function getStorage() {
+  const storage = JSON.parse(localStorage);
+  return storage;
+}
+
+console.log(getStorage());
+
+// TESTCODE BELOW
+/* 
 fetch(
   "https://api.themoviedb.org/3/movie/top_rated?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
 )
@@ -29,4 +41,4 @@ fetch(
   })
   .catch((error) => {
     console.log(error);
-  });
+  }); */
