@@ -26,14 +26,22 @@
       <img class="cross filter-white" src="./img/close.svg" alt="cross" />
     </nav>
     <form action="">
-      <input type="text" placeholder="Enter username" />
-      <input type="text" placeholder="Enter emailadress" />
-      <input type="text" placeholder="Repeat emailadress" />
-      <input type="password" placeholder="Enter password" />
-      <input type="password" placeholder="Repeat password" />
-      <button>Create Account</button>
+      <input id="username" type="text" placeholder="Enter username" />
+      <input id="email" type="text" placeholder="Enter emailadress" />
+      <input id="repeat-email" type="text" placeholder="Repeat emailadress" />
+      <input id="password" type="password" placeholder="Enter password" />
+      <input
+        id="repeat-password"
+        type="password"
+        placeholder="Repeat password"
+      />
+      <button type="submit" id="signup-btn">Create Account</button>
     </form>
-    <a href="login">Log in</a>
-    <div class="signup-error"></div>
+    <a href="login.html">Log in</a>
+    <div id="signup-error-container"></div>
+    <script src="./src/Signup.js"></script>
+    <script src="./src/User.js"></script>
+    <script src="./src/Database.js"></script>
+    <script src="./src/Validator.js"></script>
   </body>
 </html>
