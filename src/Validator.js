@@ -34,11 +34,14 @@ class Validator {
     users.forEach((user) => {
       if (user.email === newEmail) {
         uniqueEmail = false;
-        return;
-      } else {
-        delete this.errors.emailIsTakenError;
       }
     });
+    if (uniqueEmail) {
+      delete this.errors.emailIsTakenError;
+    } else {
+      this.errors.emailIsTakenError = this.emailIsTakenError;
+    }
+    console.log(localStorage);
   };
 
   checkEmailMatch = (email, repeatEmail) => {

@@ -4,19 +4,19 @@ const viewedMovies = document.querySelector(".viewed-movies");
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
 // DISPLAY ALL THE MOVIES IMAGES FROM LOCALSTORAGE
-function getAllImages() {
-  const imagesString = localStorage.getItem("images");
-  const imagesArray = JSON.parse(imagesString);
+function getCurrentUserImages() {
+  const currentUser = db.getCurrentUser();
+  const images = currentUser.images;
 
-  if (imagesArray === null) {
+  if (!images) {
     return [];
   } else {
-    return imagesArray;
+    return images;
   }
 }
 
 function displayWatchlist() {
-  const imagesArray = getAllImages();
+  const imagesArray = getCurrentUserImages();
   imagesArray.forEach((poster, index) => {
     const newImgEl = document.createElement("img");
     newImgEl.setAttribute("src", poster);

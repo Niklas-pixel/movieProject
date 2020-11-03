@@ -48,12 +48,29 @@ function saveNewMovie() {
 
   const updatedImagesArray = [...imagesArray, url];
   // GET THE current user
-  const currentUser = getCurrentUser();
+  const currentUser = db.getCurrentUser();
   // update and set the current user object (add the new images array)
   currentUser.images = updatedImagesArray;
   db.setCurrentUser(currentUser);
+
   // update the current user in the array of all the `users` in the localStorage
-  localStorage.setItem("users", currentUser);
+  // get users array from localStorage
+  const users = db.getAllUsers();
+
+  // Find the current user object in the `users` array
+  users.forEach((user) => {
+    if (currentUser.email === user.email) {
+      // update the current user object in the `users` array
+      user.images = updatedImagesArray;
+    }
+  });
+
+  const updatedUsersStr = JSON.stringify(users);
+
+  localStorage.setItem("users", updatedUsersStr);
 }
 
 addButton.addEventListener("click", saveNewMovie);
+
+// 51-70 refactor it into one Database method - updateCurrentUserImages
+// pass it a updatedImagesArray
