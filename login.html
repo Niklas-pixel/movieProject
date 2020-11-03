@@ -20,6 +20,8 @@
     <nav class="menu-display">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a id="dashboard-link" href="dashboard.html">Dashboard</a></li>
+
         <li><a href="login.html">Login</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
@@ -28,10 +30,14 @@
     <main class="login">
       <form action="">
         <input id="email-input" type="text" placeholder="Enter emailadress" />
-        <input id="password-input" type="text" placeholder="Enter password" />
+        <input
+          id="password-input"
+          type="password"
+          placeholder="Enter password"
+        />
         <button type="submit" id="login-btn">Log in</button>
       </form>
-      <a href="signup.html">New account</a>
+      <a class="new-acc-btn" href="signup.html">New account</a>
       <div class="login-error"></div>
     </main>
     <footer class="footer">

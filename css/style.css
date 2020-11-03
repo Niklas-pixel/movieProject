@@ -199,18 +199,17 @@ header {
 }
 /* fix more spec, transparent color trans*/
 nav.menu-display {
-  position: absolute;
-  display: flex;
+  text-align: center;
+  position: fixed;
+  display: none;
   background-color: #6f2232;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }
 nav.menu-display.open {
-  width: 100%;
-  height: 100%;
-  transition: width 1s ease-in, height 1s ease-in;
+  display: flex;
 }
 nav li {
   margin-bottom: 10px;
@@ -254,8 +253,9 @@ nav .cross {
   scrollbar-width: none; /* Firefox */
 }
 
-.top-rated {
-  height: 100vh;
+.movies {
+  height: 50vh;
+  margin-bottom: 50px;
 }
 
 .movie-row img {
@@ -282,8 +282,31 @@ form {
   margin-top: 200px;
 }
 
-.login a {
+.login-link-btn {
+  color: white;
+  text-align: center;
+  font-size: 1rem;
   display: block;
+  padding: 0.2rem 3.5rem;
+  text-decoration: none;
+  background-color: var(--mediumRed);
+  border-radius: 5px;
+}
+.new-acc-btn {
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  display: block;
+  padding: 0.2rem 2.2rem;
+  text-decoration: none;
+  background-color: var(--mediumRed);
+  border-radius: 5px;
+}
+
+/*MOVIE PAGE*/
+
+.movie-page {
+  margin-bottom: 90px;
 }
 
 /* MEDIA QUERIES */

@@ -2,7 +2,13 @@
 
 const moviePage = document.querySelector(".movie-page");
 const addButton = document.querySelector(".add-movie");
+
 const moviePoster = document.querySelector(".movie-poster");
+const movieTitle = document.querySelector(".movie-title");
+const movieGenre = document.querySelector(".movie-genre");
+const movieScore = document.querySelector(".movie-score");
+const movieDuration = document.querySelector(".movie-duration");
+const movieInfo = document.querySelector(".movie-info");
 
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
@@ -26,11 +32,15 @@ fetch(
 )
   .then((response) => response.json())
   .then((data) => {
+    console.log(data);
     moviePoster.setAttribute("src", imgBaseW200 + data.poster_path);
+    movieTitle.innerHTML = data.title;
+    movieScore.innerHTML = `${data.vote_average} points`;
+    movieDuration.innerHTML = `${data.runtime} minutes`;
+    movieInfo.innerHTML = data.overview;
   })
   .catch((error) => console.log(error));
 
-// REFACTORED TO WORK WITH THE CLASSES (DONT WORK THO XD)
 function getCurrentUserImages() {
   const currentUser = db.getCurrentUser();
   const images = currentUser.images;

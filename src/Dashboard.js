@@ -3,6 +3,23 @@ const viewedMovies = document.querySelector(".viewed-movies");
 
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
+function runDashboard() {
+  const users = db.getAllUsers();
+  const currentUser = db.getCurrentUser();
+
+  const user = users.find((profile) => {
+    if (profile.email === currentUser.email) {
+      return true;
+    }
+  });
+
+  if (!user) {
+    location.assign("login.html");
+  } else {
+    displayWatchlist();
+  }
+}
+
 // DISPLAY ALL THE MOVIES IMAGES FROM LOCALSTORAGE
 function getCurrentUserImages() {
   const currentUser = db.getCurrentUser();
@@ -24,4 +41,4 @@ function displayWatchlist() {
   });
 }
 
-displayWatchlist();
+window.addEventListener("load", runDashboard);
