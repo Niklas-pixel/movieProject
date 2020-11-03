@@ -19,6 +19,21 @@ class Database {
     const updatedUsersString = JSON.stringify(updatedUsersArray);
     localStorage.setItem("users", updatedUsersString);
   };
+
+  setCurrentUser = (userObj) => {
+    const userObjStr = JSON.stringify(userObj);
+    localStorage.setItem("currentUser", userObjStr);
+  };
+
+  removeCurrentUser = () => {
+    localStorage.removeItem("currentUser");
+  };
+
+  getCurrentUser = () => {
+    const userObjStr = localStorage.getItem("currentUser");
+    const userObj = JSON.parse(userObjStr);
+    return userObj;
+  };
 }
 
 const db = new Database();

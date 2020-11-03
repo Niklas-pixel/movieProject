@@ -22,6 +22,7 @@ class Login {
     if (!user) {
       this.loginError.innerHTML = "password or email is wrong";
     } else if (user) {
+      db.setCurrentUser(user);
       location.assign("dashboard.html");
     }
   };

@@ -30,38 +30,12 @@ fetch(
   })
   .catch((error) => console.log(error));
 
-// ADD MOVIE FUNCTIONALITY WITH THE ADDBUTTON AND LOCALSTORAGE
-
-// WORKING BUT OLD CODE BELOW
-/* function getAllImages() {
-  const imagesString = localStorage.getItem("images");
-  const imagesArray = JSON.parse(imagesString);
-
-  if (imagesArray === null) {
-    return [];
-  } else {
-    return imagesArray;
-  }
-}
-
-function saveNewMovie() {
-  const url = moviePoster.getAttribute("src");
-  const imagesArray = getAllImages();
-
-  const updatedImagesArray = [...imagesArray, url];
-  const updatedImagesString = JSON.stringify(updatedImagesArray);
-  localStorage.setItem("images", updatedImagesString);
-}
-
-addButton.addEventListener("click", saveNewMovie); */
-
 // REFACTORED TO WORK WITH THE CLASSES (DONT WORK THO XD)
-function getAllImages() {
-  const usersString = localStorage.getItem("users");
-  const usersArray = JSON.parse(usersString);
-  const images = usersArray[0].images;
-  console.log(images);
-  if (images === null) {
+function getCurrentUserImages() {
+  const currentUser = db.getCurrentUser();
+  const images = currentUser.images;
+
+  if (!images) {
     return [];
   } else {
     return images;
@@ -70,15 +44,16 @@ function getAllImages() {
 
 function saveNewMovie() {
   const url = moviePoster.getAttribute("src");
-  const imagesArray = getAllImages();
+  const imagesArray = getCurrentUserImages();
 
   const updatedImagesArray = [...imagesArray, url];
-  const updatedImagesString = JSON.stringify(updatedImagesArray);
-
-  // add the images array onto the user image propertie
-  newUser.images = updatedImagesArray;
-
-  localStorage.setItem("users");
+  // GET THE current user
+  const currentUser = getCurrentUser();
+  // update and set the current user object (add the new images array)
+  currentUser.images = updatedImagesArray;
+  db.setCurrentUser(currentUser);
+  // update the current user in the array of all the `users` in the localStorage
+  localStorage.setItem("users", currentUser);
 }
 
 addButton.addEventListener("click", saveNewMovie);

@@ -1,6 +1,9 @@
 // index.html elements
 const imageDivHero = document.querySelector(".trend-movies");
 const imageDivTopRated = document.querySelector(".movie-row");
+const menu = document.querySelector(".menu");
+const nav = document.querySelector(".menu-display");
+const navOpen = document.querySelector(".cross");
 
 const imgBase400 = "https://image.tmdb.org/t/p/w400";
 const imgBase200 = "https://image.tmdb.org/t/p/w200";
@@ -39,5 +42,9 @@ fetch(
     console.log(error);
   });
 
-// THIS IS WHERE CLASSES COME IN, STORE THE CLICKED MOVIES PROPERTIES IN THE CLASS
-// AND IN Movie.js And movie.html DISPLAY THOSE PROPERTIES
+menu.addEventListener("click", () => {
+  nav.classList.add("open");
+});
+navOpen.addEventListener("click", () => {
+  nav.classList.remove("open");
+});
