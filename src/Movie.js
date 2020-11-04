@@ -12,6 +12,10 @@ const movieScore = document.querySelector(".movie-score");
 const movieDuration = document.querySelector(".movie-duration");
 const movieInfo = document.querySelector(".movie-info");
 
+const menu = document.querySelector(".menu");
+const nav = document.querySelector(".menu-display");
+const navOpen = document.querySelector(".cross");
+
 const imgBaseW400 = "https://image.tmdb.org/t/p/w400";
 
 function GetURLParameter(sParam) {
@@ -34,7 +38,6 @@ fetch(
 )
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     movieBg.style.backgroundImage = `url(${imgBaseW400 + data.poster_path})`;
     movieTitle.innerHTML = data.title;
     movieScore.innerHTML = `${data.vote_average} points`;
@@ -130,3 +133,10 @@ function saveViewedMovie() {
 }
 
 viewedButton.addEventListener("click", saveViewedMovie);
+
+menu.addEventListener("click", () => {
+  nav.classList.add("open");
+});
+navOpen.addEventListener("click", () => {
+  nav.classList.remove("open");
+});

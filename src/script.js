@@ -62,13 +62,6 @@ fetch(
     console.log(error);
   });
 
-menu.addEventListener("click", () => {
-  nav.classList.add("open");
-});
-navOpen.addEventListener("click", () => {
-  nav.classList.remove("open");
-});
-
 // THIS IS FOR UPCOMING MOVIES ON HOMEPAGe
 fetch(
   "https://api.themoviedb.org/3/movie/upcoming?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
@@ -86,10 +79,19 @@ fetch(
 
       // set movie.html content on click and redirect to movie.html
       imgTagsUpcoming.addEventListener("click", () => {
-        location.assign(`movie.html?movie=${topMovie.id}`);
-      });
-    });
+        location.assign(
+          `https://niklaswernfeldt.github.io/movieProject/movie.html?movie=${topMovie.id}`
+        );
+      }); // PROD /* https://niklaswernfeldt.github.io/movieProject/movie.html?movie=724089 */
+    }); // DEV /* `movie.html?movie=${topMovie.id}` */
   })
   .catch((error) => {
     console.log(error);
   });
+
+menu.addEventListener("click", () => {
+  nav.classList.add("open");
+});
+navOpen.addEventListener("click", () => {
+  nav.classList.remove("open");
+});
