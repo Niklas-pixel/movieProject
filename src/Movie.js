@@ -2,7 +2,9 @@
 
 const moviePage = document.querySelector(".movie-page");
 const addButton = document.querySelector(".add-movie");
+const viewedButton = document.querySelector(".viewed-movie");
 
+const movieBg = document.querySelector(".movie-bg");
 const moviePoster = document.querySelector(".movie-poster");
 const movieTitle = document.querySelector(".movie-title");
 const movieGenre = document.querySelector(".movie-genre");
@@ -10,7 +12,7 @@ const movieScore = document.querySelector(".movie-score");
 const movieDuration = document.querySelector(".movie-duration");
 const movieInfo = document.querySelector(".movie-info");
 
-const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
+const imgBaseW400 = "https://image.tmdb.org/t/p/w400";
 
 function GetURLParameter(sParam) {
   var sPageURL = window.location.search.substring(1);
@@ -33,7 +35,7 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
-    moviePoster.setAttribute("src", imgBaseW200 + data.poster_path);
+    movieBg.style.backgroundImage = `url(${imgBaseW400 + data.poster_path})`;
     movieTitle.innerHTML = data.title;
     movieScore.innerHTML = `${data.vote_average} points`;
     movieDuration.innerHTML = `${data.runtime} minutes`;
@@ -58,7 +60,7 @@ function saveNewMovie() {
 
   const updatedImagesArray = [...imagesArray, url];
   // GET THE current user
-  const currentUser = db.getCurrentUser();
+  const currentUser = db.getCurrentUser(); // REFACTOR FROM THIS LINE TO...
   // update and set the current user object (add the new images array)
   currentUser.images = updatedImagesArray;
   db.setCurrentUser(currentUser);
@@ -77,10 +79,54 @@ function saveNewMovie() {
 
   const updatedUsersStr = JSON.stringify(users);
 
-  localStorage.setItem("users", updatedUsersStr);
+  localStorage.setItem("users", updatedUsersStr); // ...THIS LINE
 }
 
 addButton.addEventListener("click", saveNewMovie);
 
-// 51-70 refactor it into one Database method - updateCurrentUserImages
+// line (61-80) refactor it into one Database method - updateCurrentUserImages()
 // pass it a updatedImagesArray
+
+function getCurrentUserViewed() {
+  const currentUser = db.getCurrentUser();
+  const viewed = currentUser.viewed;
+
+  if (!viewed) {
+    return [];
+  } else {
+    return viewed;
+  }
+}
+
+// Refactor the code below to a Database method aswell - updateCurrentUserViewed()
+// pass it a updatedViewedArray
+
+function saveViewedMovie() {
+  const url = moviePoster.getAttribute("src");
+  const viewedArray = getCurrentUserViewed();
+
+  const updatedViewedArray = [...viewedArray, url];
+  // GET THE current user
+  const currentUser = db.getCurrentUser(); // REFACTOR FROM THIS LINE TO...
+  // update and set the current user object (add the new images array)
+  currentUser.viewed = updatedViewedArray;
+  db.setCurrentUser(currentUser);
+
+  // update the current user in the array of all the `users` in the localStorage
+  // get users array from localStorage
+  const users = db.getAllUsers();
+
+  // Find the current user object in the `users` array
+  users.forEach((user) => {
+    if (currentUser.email === user.email) {
+      // update the current user object in the `users` array
+      user.viewed = updatedViewedArray;
+    }
+  });
+
+  const updatedUsersStr = JSON.stringify(users);
+
+  localStorage.setItem("users", updatedUsersStr); // ...THIS LINE
+}
+
+viewedButton.addEventListener("click", saveViewedMovie);

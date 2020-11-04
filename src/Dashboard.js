@@ -20,7 +20,7 @@ function runDashboard() {
   }
 }
 
-// DISPLAY ALL THE MOVIES IMAGES FROM LOCALSTORAGE
+// DISPLAY ALL THE WATCHLIST MOVIES IMAGES FROM LOCALSTORAGE
 function getCurrentUserImages() {
   const currentUser = db.getCurrentUser();
   const images = currentUser.images;
@@ -32,12 +32,34 @@ function getCurrentUserImages() {
   }
 }
 
+// DISPLAY ALL THE VIEWED MOVIES IMAGES FROM LOCALSTORAGE
+
+function getCurrentUserViewed() {
+  const currentUser = db.getCurrentUser();
+  const viewed = currentUser.viewed;
+
+  if (!viewed) {
+    return [];
+  } else {
+    return viewed;
+  }
+}
+
 function displayWatchlist() {
+  // CODE BELOW FOR WATCHLIST
   const imagesArray = getCurrentUserImages();
-  imagesArray.forEach((poster, index) => {
+  imagesArray.forEach((poster) => {
     const newImgEl = document.createElement("img");
     newImgEl.setAttribute("src", poster);
     watchlist.appendChild(newImgEl);
+  });
+
+  // CODE BELOW FOR VIEWED
+  const viewedArray = getCurrentUserViewed();
+  viewedArray.forEach((poster) => {
+    const newImgEl = document.createElement("img");
+    newImgEl.setAttribute("src", poster);
+    viewedMovies.appendChild(newImgEl);
   });
 }
 
