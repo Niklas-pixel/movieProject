@@ -32,12 +32,13 @@ function GetURLParameter(sParam) {
 const movieId = GetURLParameter("movie");
 
 // FETCH MOVIE WITH THE ID
-
+console.log("before fetch");
 fetch(
   `https://api.themoviedb.org/3/movie/${movieId}?api_key=a2bf12ab60f87e1ff69ef7b00f747938`
 )
   .then((response) => response.json())
   .then((data) => {
+    console.log("data", data);
     movieBg.style.backgroundImage = `url(${imgBaseW400 + data.poster_path})`;
     movieTitle.innerHTML = data.title;
     movieScore.innerHTML = `${data.vote_average} points`;

@@ -63,13 +63,16 @@ fetch(
   });
 
 // THIS IS FOR UPCOMING MOVIES ON HOMEPAGe
+console.log("before fetch");
 fetch(
   "https://api.themoviedb.org/3/movie/upcoming?api_key=a2bf12ab60f87e1ff69ef7b00f747938"
 )
   .then((response) => {
+    console.log("first then");
     return response.json();
   })
   .then((data) => {
+    console.log("data");
     data.results.forEach((topMovie) => {
       const srcUrl200 = imgBase200 + topMovie.poster_path;
       const imgTagsUpcoming = document.createElement("img");
@@ -79,9 +82,7 @@ fetch(
 
       // set movie.html content on click and redirect to movie.html
       imgTagsUpcoming.addEventListener("click", () => {
-        location.assign(
-          `https://niklaswernfeldt.github.io/movieProject/movie.html?movie=${topMovie.id}`
-        );
+        location.assign(`movie.html?movie=${topMovie.id}`);
       }); // PROD /* https://niklaswernfeldt.github.io/movieProject/movie.html?movie=724089 */
     }); // DEV /* `movie.html?movie=${topMovie.id}` */
   })
