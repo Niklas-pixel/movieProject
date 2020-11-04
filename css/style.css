@@ -409,9 +409,10 @@ form {
 
 /* From 1024px and up */
 @media (min-width: 1024px) {
+  /*HOME PAGE*/
   header {
     width: 100vw;
-    height: 12%;
+    height: 9%;
     background-color: var(--lightRed);
     display: flex;
     justify-content: space-between;
@@ -419,4 +420,55 @@ form {
     position: fixed;
     top: 0;
   }
+
+  .logo-img {
+    width: 3vw;
+    height: 3vw;
+  }
+  /*NAVIGATION*/
+  nav .cross {
+    width: 3vw;
+  }
+
+  .trend-movies {
+    margin-top: 68px; /* is there a better way*/
+  }
+  /*DASHBOARD*/
+  .list {
+    margin-top: 4rem;
+  }
+  /*LOGIN/SIGNUP FORM*/
+
+  input {
+    width: 30vw;
+    height: 4vh;
+  }
+  #form-btn {
+    height: 4vh;
+  }
+
+  /*MOVIE PAGE*/
+
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .movie-page {
+    display: flex;
+    align-items: center;
+    width: 60vw;
+    margin-bottom: 0;
+  }
+
+  .movie-bg {
+    display: none;
+  }
+
+  .movie-poster {
+    display: block;
+  }
+
+  /*FAQ PAGE*/
 }
