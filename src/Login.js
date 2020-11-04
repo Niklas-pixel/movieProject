@@ -2,7 +2,7 @@ class Login {
   constructor() {
     this.emailInput = document.querySelector("#email-input");
     this.passwordInput = document.querySelector("#password-input");
-    this.loginButton = document.querySelector("#login-btn");
+    this.loginButton = document.querySelector(".login-btn");
     this.loginError = document.querySelector(".login-error");
   }
 

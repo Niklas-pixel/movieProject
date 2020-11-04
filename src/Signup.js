@@ -10,7 +10,7 @@ class Signup {
     this.repeatPasswordInput = document.querySelector("#repeat-password");
     // other form elements
     this.errorMessage = document.querySelector("#signup-error-container");
-    this.submitButton = document.querySelector("#signup-btn");
+    this.submitButton = document.querySelector(".signup-btn");
   }
 
   handleEmailInput = (event) => {

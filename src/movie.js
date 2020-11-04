@@ -17,6 +17,7 @@ const nav = document.querySelector(".menu-display");
 const navOpen = document.querySelector(".cross");
 
 const imgBaseW400 = "https://image.tmdb.org/t/p/w400";
+const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
 function GetURLParameter(sParam) {
   var sPageURL = window.location.search.substring(1);
@@ -40,6 +41,8 @@ fetch(
   .then((data) => {
     console.log("data", data);
     movieBg.style.backgroundImage = `url(${imgBaseW400 + data.poster_path})`;
+    moviePoster.setAttribute("src", imgBaseW200 + data.poster_path);
+
     movieTitle.innerHTML = data.title;
     movieScore.innerHTML = `${data.vote_average} points`;
     movieDuration.innerHTML = `${data.runtime} minutes`;
