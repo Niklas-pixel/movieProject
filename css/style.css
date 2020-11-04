@@ -376,6 +376,27 @@ form {
   color: var(--black);
 }
 
+/*FAQ PAGE*/
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.faq-div {
+  font-size: 1rem;
+  background-color: var(--mediumRed);
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.question {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 /* MEDIA QUERIES */
 
 /* Mobile first, we start from the smallest viewport width */
