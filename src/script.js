@@ -82,7 +82,9 @@ fetch(
 
       // set movie.html content on click and redirect to movie.html
       imgTagsUpcoming.addEventListener("click", () => {
-        location.assign(`movie.html?movie=${topMovie.id}`);
+        location.assign(
+          `https://niklaswernfeldt.github.io/movieProject/movie.html?movie=${topMovie.id}`
+        );
       }); // PROD /* https://niklaswernfeldt.github.io/movieProject/movie.html?movie=724089 */
     }); // DEV /* `movie.html?movie=${topMovie.id}` */
   })
