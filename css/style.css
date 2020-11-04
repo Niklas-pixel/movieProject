@@ -274,11 +274,9 @@ nav .cross {
 /*DASHBOARD CSS*/
 
 .watchlist {
-  margin: 2rem 0 2rem 0;
+  margin: 0rem 0 2rem 0;
 }
-.dashboard-row h3 {
-  margin-top: 2rem;
-}
+
 .viewed {
   margin: 2rem 0 5rem 0;
 }
@@ -374,6 +372,10 @@ form {
   padding: 0.5rem 1rem;
   background-color: var(--mediumRed);
   color: var(--black);
+}
+
+.movie-poster {
+  display: none;
 }
 
 /*FAQ PAGE*/
