@@ -426,6 +426,13 @@ form {
     height: 3vw;
   }
   /*NAVIGATION*/
+
+  nav.menu-display.open {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+  }
+
   nav .cross {
     width: 3vw;
   }
