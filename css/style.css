@@ -425,6 +425,7 @@ form {
     width: 3vw;
     height: 3vw;
   }
+
   /*NAVIGATION*/
 
   nav.menu-display.open {
@@ -462,6 +463,12 @@ form {
     align-items: center;
   }
 
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .movie-page {
     display: flex;
     align-items: center;
@@ -475,6 +482,17 @@ form {
 
   .movie-poster {
     display: block;
+  }
+
+  .button-container {
+    margin-top: 2rem;
+    justify-content: space-evenly;
+  }
+
+  .movie-btn:hover {
+    background-color: var(--lightRed);
+    color: white;
+    transition: background-color 0.1s, color 0.1s;
   }
 
   /*FAQ PAGE*/
