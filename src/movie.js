@@ -19,8 +19,6 @@ const navOpen = document.querySelector(".cross");
 const imgBaseW400 = "https://image.tmdb.org/t/p/w400";
 const imgBaseW200 = "https://image.tmdb.org/t/p/w200";
 
-let imgObj = {};
-
 function GetURLParameter(sParam) {
   var sPageURL = window.location.search.substring(1);
   var sURLVariables = sPageURL.split("&");
@@ -35,7 +33,7 @@ function GetURLParameter(sParam) {
 const movieId = GetURLParameter("movie");
 
 // FETCH MOVIE WITH THE ID
-console.log("before fetch");
+
 fetch(
   `https://api.themoviedb.org/3/movie/${movieId}?api_key=a2bf12ab60f87e1ff69ef7b00f747938`
 )
@@ -48,8 +46,6 @@ fetch(
     movieScore.innerHTML = `${data.vote_average} points`;
     movieDuration.innerHTML = `${data.runtime} minutes`;
     movieInfo.innerHTML = data.overview;
-    imgObj = { ...data };
-    console.log(imgObj);
   })
   .catch((error) => console.log(error));
 
