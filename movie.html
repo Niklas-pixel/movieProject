@@ -8,8 +8,14 @@
   <body class="flex-container">
     <header id="header">
       <div class="logo">
-        <img class="logo-img filter-white" src="./img/cinema.svg" alt="logo" />
-        <p class="logo-text">TIME</p>
+        <a href="index.html">
+          <img
+            class="logo-img filter-white"
+            src="./img/cinema.svg"
+            alt="logo"
+          />
+          <p class="logo-text">TIME</p>
+        </a>
       </div>
       <div class="menu">
         <div class="menu-stroke menu-bar-top"></div>
@@ -30,9 +36,9 @@
 
     <main class="main">
       <div class="movie-page">
-        <img class="movie-poster" src="" alt="" />
+        <img class="movie-poster slide-in-left" src="" alt="" />
         <div class="movie-bg"></div>
-        <section class="movie-details">
+        <section class="movie-details slide-in-right">
           <div class="movie-info-row">
             <h5 class="movie-label">Title:</h5>
             <p class="movie-title"></p>
@@ -54,7 +60,7 @@
         </section>
       </div>
 
-      <div class="button-container">
+      <div class="button-container slide-in-bottom">
         <button class="movie-btn viewed-movie">Watched</button>
 
         <button class="movie-btn add-movie">Watchlist</button>
