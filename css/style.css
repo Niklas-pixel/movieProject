@@ -206,6 +206,7 @@ a {
   border-radius: 10px;
   margin: 5px;
 }
+/*NAVIGATION*/
 /* fix more spec, transparent color trans*/
 nav.menu-display {
   text-align: center;
@@ -235,6 +236,11 @@ nav .cross {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.menu-display li a:hover {
+  color: var(--lightRed);
+  transition: color 0.1s;
 }
 
 /* MAIN CONTENT HOMEPAGE */
@@ -338,7 +344,7 @@ form {
 
 .movie-page {
   font-size: 1rem;
-  margin-bottom: 90px; /* Change this*/
+  /*margin-bottom: 90px;*/ /* Change this*/
 }
 
 .movie-details {
@@ -364,6 +370,7 @@ form {
 }
 
 .button-container {
+  margin-bottom: 4rem;
   width: 100vw;
   height: 6vh;
   display: flex;
@@ -376,6 +383,13 @@ form {
   padding: 0.5rem 1rem;
   background-color: var(--mediumRed);
   color: var(--black);
+}
+
+.movie-btn:hover {
+  background-color: var(--lightRed);
+  color: white;
+  transition: background-color 0.1s, color 0.1s;
+  cursor: pointer;
 }
 
 .movie-poster {
@@ -440,11 +454,6 @@ form {
 
   nav .cross {
     width: 3vw;
-  }
-
-  .menu-display li a:hover {
-    color: var(--lightRed);
-    transition: color 0.1s;
   }
 
   .trend-movies {
@@ -625,13 +634,6 @@ form {
   .button-container {
     margin-top: 2rem;
     justify-content: space-evenly;
-  }
-
-  .movie-btn:hover {
-    background-color: var(--lightRed);
-    color: white;
-    transition: background-color 0.1s, color 0.1s;
-    cursor: pointer;
   }
 
   /*FAQ PAGE*/
